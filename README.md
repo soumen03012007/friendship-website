@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # A Little Teddy for You 🧸💗
 ### Cute Teddy Bear Apology & Friendship Website
 
@@ -135,6 +134,3 @@ npm run preview
 - **Edit Pranks:** Edit [src/data/pranks.js](file:///d:/project0/Friendship-Website/src/data/pranks.js).
 - **Change Colors:** Modify CSS variables in [src/styles/global.css](file:///d:/project0/Friendship-Website/src/styles/global.css) (`--soft-pink`, `--rose-pink`, `--cream`, etc.).
 - **Customize Teddy Expressions:** Check out [src/components/Teddy.jsx](file:///d:/project0/Friendship-Website/src/components/Teddy.jsx).
-=======
-# Friendship-Website
->>>>>>> 63dc7a1f2a5f8179bb065ac33c5714fc8504d413
