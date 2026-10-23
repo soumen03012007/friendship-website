@@ -17,10 +17,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="./assets/index-BC2Aingv.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-B_MtFWl-.css">
+    <script type="module" crossorigin src="./assets/app.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index.css">
   </head>
   <body>
     <div id="root"></div>
+    <!-- Production fallback for GitHub Pages when deploying from main branch -->
+    <script>
+      (function() {
+        var isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+        if (!isLocal && !document.querySelector('script[src*="assets/app.js"]')) {
+          var link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = './assets/index.css';
+          document.head.appendChild(link);
+
+          var s = document.createElement('script');
+          s.type = 'module';
+          s.crossOrigin = 'anonymous';
+          s.src = './assets/app.js';
+          document.body.appendChild(s);
+        }
+      })();
+    </script>
   </body>
 </html>
