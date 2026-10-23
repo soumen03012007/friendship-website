@@ -21,5 +21,23 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- Production fallback for GitHub Pages when deploying from main branch -->
+    <script>
+      (function() {
+        var isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+        if (!isLocal && !document.querySelector('script[src*="assets/app.js"]')) {
+          var link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = './assets/index.css';
+          document.head.appendChild(link);
+
+          var s = document.createElement('script');
+          s.type = 'module';
+          s.crossOrigin = 'anonymous';
+          s.src = './assets/app.js';
+          document.body.appendChild(s);
+        }
+      })();
+    </script>
   </body>
 </html>
