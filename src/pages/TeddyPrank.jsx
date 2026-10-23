@@ -46,37 +46,13 @@ export default function TeddyPrank({ onNext, onBack, currentStep }) {
           {/* Speech Bubble */}
           <motion.div
             key={`speech-${wobbleKey}`}
+            className="prank-speech-bubble"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-            style={{
-              position: 'relative',
-              background: '#FFFFFF',
-              border: '2px solid var(--rose-pink)',
-              borderRadius: '18px',
-              padding: '0.65rem 1.4rem',
-              display: 'inline-block',
-              fontSize: '1.25rem',
-              fontWeight: '700',
-              color: 'var(--rose-pink)',
-              boxShadow: 'var(--shadow-sm)',
-              marginBottom: '0.6rem'
-            }}
           >
             {activePrank.speech}
-            <div
-              style={{
-                position: 'absolute',
-                bottom: -8,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: 0,
-                height: 0,
-                borderLeft: '8px solid transparent',
-                borderRight: '8px solid transparent',
-                borderTop: '8px solid var(--rose-pink)'
-              }}
-            />
+            <div className="speech-bubble-tail" />
           </motion.div>
 
           {/* Teddy with outfit and shake animation */}

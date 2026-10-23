@@ -18,7 +18,7 @@ export default function SpecialMessage({ onNext, onBack, currentStep }) {
         <h1 className="page-title">You're My Favorite Person 💗</h1>
 
         {/* Teddy Bear hugging a giant glowing heart with floating mini hearts */}
-        <div style={{ position: 'relative', margin: '1.2rem auto', width: 220, height: 210 }}>
+        <div className="special-teddy-container">
           <Teddy mood="love" size={210} animated={true} />
 
           {/* Floating animated ambient hearts */}
@@ -47,18 +47,10 @@ export default function SpecialMessage({ onNext, onBack, currentStep }) {
 
         {/* Heartwarming emotional message */}
         <motion.div
+          className="special-quote-box"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          style={{
-            background: 'linear-gradient(135deg, #FFF6F9 0%, #F5EEFF 100%)',
-            border: '2px solid rgba(255, 214, 231, 0.9)',
-            borderRadius: '24px',
-            padding: '1.6rem 1.4rem',
-            margin: '0.8rem auto 1.5rem auto',
-            maxWidth: 520,
-            boxShadow: 'var(--shadow-sm)'
-          }}
         >
           <p
             style={{

@@ -48,7 +48,7 @@ export default function MoodSelection({ onNext, onBack, currentStep }) {
                 onKeyDown={(e) => e.key === 'Enter' && handleSelect(m.key)}
               >
                 <div className="mood-emoji-badge">{m.emoji}</div>
-                <div style={{ height: 110, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="mood-teddy-box">
                   <Teddy mood={m.bearMood} size={105} animated={isSelected} />
                 </div>
                 <div className="mood-title">{m.title}</div>

@@ -9,6 +9,17 @@ import { ArrowLeft, RotateCcw, Heart, Sparkles as SparkleIcon } from 'lucide-rea
 
 export default function Ending({ onReset, onBack }) {
   const [isEnded, setIsEnded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 600);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const bearSize = isMobile ? 120 : 155;
+  const hugOffset = isMobile ? 25 : 38;
 
   const handleEndClick = () => {
     setIsEnded(true);
@@ -115,7 +126,7 @@ export default function Ending({ onReset, onBack }) {
             <motion.div
               animate={
                 isEnded
-                  ? { x: 38, rotate: 10, scale: 1.05 }
+                  ? { x: hugOffset, rotate: 10, scale: 1.05 }
                   : { y: [0, -6, 0] }
               }
               transition={
@@ -125,14 +136,14 @@ export default function Ending({ onReset, onBack }) {
               }
               style={{ zIndex: 2 }}
             >
-              <Teddy mood={isEnded ? 'love' : 'shy'} size={155} animated={!isEnded} />
+              <Teddy mood={isEnded ? 'love' : 'shy'} size={bearSize} animated={!isEnded} />
             </motion.div>
 
             {/* Glowing Hearts between them */}
             <motion.div
               style={{
-                fontSize: '2rem',
-                margin: '0 -10px',
+                fontSize: isMobile ? '1.6rem' : '2rem',
+                margin: '0 -8px',
                 zIndex: 4,
                 filter: 'drop-shadow(0 0 12px rgba(255, 79, 135, 0.9))'
               }}
@@ -154,7 +165,7 @@ export default function Ending({ onReset, onBack }) {
             <motion.div
               animate={
                 isEnded
-                  ? { x: -38, rotate: -10, scale: 1.05 }
+                  ? { x: -hugOffset, rotate: -10, scale: 1.05 }
                   : { y: [0, -6, 0] }
               }
               transition={
@@ -164,7 +175,7 @@ export default function Ending({ onReset, onBack }) {
               }
               style={{ zIndex: 2 }}
             >
-              <Teddy mood={isEnded ? 'love' : 'heart'} size={155} animated={!isEnded} />
+              <Teddy mood={isEnded ? 'love' : 'heart'} size={bearSize} animated={!isEnded} />
             </motion.div>
           </div>
 

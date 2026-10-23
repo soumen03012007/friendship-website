@@ -93,15 +93,7 @@ export default function Extras({ onClose }) {
         <p className="page-subtitle">Interactive cards crafted to brighten up your mood anytime!</p>
 
         {/* Tab Navigation */}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '0.6rem',
-            justifyContent: 'center',
-            marginBottom: '1.8rem'
-          }}
-        >
+        <div className="extras-tabs-container">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
@@ -111,11 +103,7 @@ export default function Extras({ onClose }) {
                   sound.playPop();
                   setActiveTab(tab.id);
                 }}
-                className={isActive ? 'btn-cute-primary' : 'btn-cute-secondary'}
-                style={{
-                  padding: '0.65rem 1.25rem',
-                  fontSize: '0.92rem'
-                }}
+                className={`extras-tab-btn ${isActive ? 'btn-cute-primary active' : 'btn-cute-secondary'}`}
               >
                 {tab.icon}
                 <span>{tab.label}</span>

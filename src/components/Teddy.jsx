@@ -52,8 +52,7 @@ export default function Teddy({
     >
       <svg
         viewBox="0 0 200 200"
-        width={size}
-        height={size}
+        style={{ width: '100%', height: '100%', display: 'block' }}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >

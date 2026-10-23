@@ -218,7 +218,7 @@ export default function HeartGame({ onNext, onBack, currentStep }) {
                     <RotateCcw size={16} />
                     <span>Play Again</span>
                   </button>
-                  <button type="button" className="btn-cute-primary" onClick={onNext}>
+                  <button type="button" className="btn-cute-primary game-finish-next-btn" onClick={onNext}>
                     <span>Continue to Special Message →</span>
                   </button>
                 </div>

@@ -32,10 +32,10 @@ export default function SweetReminder({ onNext, onBack, currentStep }) {
 
         {/* Dreamy Sunset Landscape with Teddy */}
         <div
+          className="sunset-landscape-box"
           style={{
             position: 'relative',
             width: '100%',
-            height: 180,
             borderRadius: '24px',
             background: 'linear-gradient(180deg, #FFB3D1 0%, #FFD6A5 55%, #FDFFB6 100%)',
             overflow: 'hidden',
@@ -94,35 +94,18 @@ export default function SweetReminder({ onNext, onBack, currentStep }) {
           {sweetReminders.map((r) => (
             <motion.div
               key={r.id}
+              className="sweet-reminder-card"
               variants={itemVariants}
               whileHover={{ scale: 1.02, x: 4 }}
-              style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '0.9rem',
-                background: 'rgba(255, 255, 255, 0.9)',
-                padding: '0.85rem 1.1rem',
-                borderRadius: '16px',
-                border: '1.5px solid var(--soft-pink)',
-                boxShadow: 'var(--shadow-sm)'
-              }}
             >
-              <span
-                style={{
-                  color: 'var(--rose-pink)',
-                  fontSize: '1.4rem',
-                  lineHeight: 1,
-                  marginTop: '2px',
-                  filter: 'drop-shadow(0 2px 4px rgba(255,79,135,0.3))'
-                }}
-              >
+              <span className="sweet-reminder-icon">
                 💗
               </span>
               <div>
-                <div style={{ fontSize: '1.05rem', fontWeight: '700', color: 'var(--warm-brown)' }}>
+                <div className="sweet-reminder-title">
                   {r.text}
                 </div>
-                <div style={{ fontSize: '0.88rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+                <div className="sweet-reminder-detail">
                   {r.detail}
                 </div>
               </div>

@@ -24,14 +24,15 @@ export function AppHeader({ onOpenExtras, onGoHome, currentScreen }) {
         aria-label="Go to welcome screen"
         onKeyDown={(e) => e.key === 'Enter' && onGoHome()}
       >
-        <span style={{ fontSize: '1.4rem' }}>🧸</span>
+        <span className="header-brand-emoji">🧸</span>
         <span className="header-brand-title">A Little Teddy for You</span>
+        <span className="header-brand-title-mobile">Little Teddy</span>
       </div>
 
       <div className="header-actions">
         {/* Sound Toggle Button */}
         <button
-          className="icon-btn"
+          className="icon-btn sound-toggle-btn"
           onClick={handleToggleSound}
           title={isMuted ? "Turn sound ON (cute chimes & effects)" : "Mute sound"}
           aria-label={isMuted ? "Unmute audio" : "Mute audio"}
@@ -46,7 +47,8 @@ export function AppHeader({ onOpenExtras, onGoHome, currentScreen }) {
           aria-label="Open Quick Extras"
         >
           <SparkleIcon size={16} />
-          <span>Quick Extras</span>
+          <span className="extras-btn-text">Quick Extras</span>
+          <span className="extras-btn-text-mobile">Extras</span>
         </button>
       </div>
     </header>
@@ -62,23 +64,11 @@ export function BottomNav({
   disableNext = false,
   showBack = true
 }) {
+  const hasBack = showBack && currentStep > 1;
+
   return (
     <div className="nav-bottom-bar">
-      <div>
-        {showBack && currentStep > 1 ? (
-          <button
-            type="button"
-            className="btn-cute-outline"
-            onClick={onBack}
-            aria-label="Go back to previous screen"
-          >
-            <ArrowLeft size={16} />
-            <span>Back</span>
-          </button>
-        ) : <div style={{ width: 80 }} />}
-      </div>
-
-      {/* Step Dots */}
+      {/* Step Dots Track */}
       <div className="progress-pill-track" aria-label={`Step ${currentStep} of ${totalSteps}`}>
         {Array.from({ length: totalSteps }).map((_, idx) => {
           const stepNum = idx + 1;
@@ -94,19 +84,31 @@ export function BottomNav({
         })}
       </div>
 
-      <div>
-        {onNext ? (
+      {/* Buttons Container */}
+      <div className={`nav-buttons-container ${hasBack ? 'has-back' : 'next-only'}`}>
+        {hasBack && (
           <button
             type="button"
-            className="btn-cute-primary"
+            className="btn-cute-outline btn-nav-back"
+            onClick={onBack}
+            aria-label="Go back to previous screen"
+          >
+            <ArrowLeft size={16} />
+            <span>Back</span>
+          </button>
+        )}
+
+        {onNext && (
+          <button
+            type="button"
+            className="btn-cute-primary btn-nav-next"
             onClick={onNext}
             disabled={disableNext}
             aria-label={nextLabel}
-            style={{ padding: '0.75rem 1.4rem', fontSize: '0.95rem' }}
           >
             <span>{nextLabel}</span>
           </button>
-        ) : <div style={{ width: 80 }} />}
+        )}
       </div>
     </div>
   );

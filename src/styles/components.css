@@ -103,11 +103,20 @@
   transform: scale(1.03);
 }
 
+.header-brand-emoji {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
 .header-brand-title {
   font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--warm-brown);
+}
+
+.header-brand-title-mobile {
+  display: none;
 }
 
 .header-actions {
@@ -128,6 +137,7 @@
   color: var(--warm-brown);
   box-shadow: var(--shadow-sm);
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .icon-btn:hover {
@@ -149,6 +159,7 @@
   border: 1.5px solid var(--rose-pink);
   box-shadow: 0 4px 12px rgba(255, 79, 135, 0.15);
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .extras-pill-btn:hover {
@@ -157,27 +168,33 @@
   transform: translateY(-2px) scale(1.05);
 }
 
+.extras-btn-text-mobile {
+  display: none;
+}
+
 /* Nav Bottom Controls (Back, Step Indicators, Next) */
 .nav-bottom-bar {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
-  margin-top: 1.8rem;
-  padding-top: 1.2rem;
+  margin-top: 1.6rem;
+  padding-top: 1.1rem;
   border-top: 1.5px dashed rgba(255, 214, 231, 0.9);
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 .progress-pill-track {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.35rem;
 }
 
 .step-dot {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: rgba(255, 214, 231, 0.8);
   transition: all 0.3s ease;
@@ -185,13 +202,63 @@
 
 .step-dot.active {
   background: var(--rose-pink);
-  width: 24px;
+  width: 22px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(255, 79, 135, 0.5);
 }
 
 .step-dot.passed {
   background: #FF8BA7;
+}
+
+.nav-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.6rem;
+}
+
+.nav-buttons-container.next-only {
+  justify-content: center;
+}
+
+.btn-nav-back {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.btn-nav-next {
+  flex: 1 1 auto;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.95rem;
+}
+
+.nav-buttons-container.next-only .btn-nav-next {
+  flex: 0 1 auto;
+  min-width: 200px;
+}
+
+@media (min-width: 641px) {
+  .nav-bottom-bar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .progress-pill-track {
+    order: 2;
+  }
+  .nav-buttons-container {
+    display: contents;
+  }
+  .btn-nav-back {
+    order: 1;
+  }
+  .btn-nav-next {
+    order: 3;
+    flex: 0 0 auto;
+  }
 }
 
 /* Screen Title and Subtitles */
@@ -268,6 +335,19 @@
   filter: drop-shadow(0 4px 6px rgba(0,0,0,0.06));
 }
 
+.mood-teddy-box {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .mood-teddy-box {
+    height: 85px;
+  }
+}
+
 .mood-title {
   font-size: 1.1rem;
   font-weight: 700;
@@ -326,6 +406,134 @@
   justify-content: center;
   gap: 1.2rem;
   margin-top: 1.2rem;
+}
+
+/* Teddy Prank Speech Bubble */
+.prank-speech-bubble {
+  position: relative;
+  background: #FFFFFF;
+  border: 2px solid var(--rose-pink);
+  border-radius: 18px;
+  padding: 0.65rem 1.4rem;
+  display: inline-block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--rose-pink);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 0.6rem;
+}
+
+.speech-bubble-tail {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--rose-pink);
+}
+
+@media (max-width: 640px) {
+  .prank-speech-bubble {
+    font-size: 1.05rem;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+  }
+}
+
+/* Sweet Reminders */
+.sunset-landscape-box {
+  height: 180px;
+}
+
+.sweet-reminder-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.85rem 1.1rem;
+  border-radius: 16px;
+  border: 1.5px solid var(--soft-pink);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+.sweet-reminder-icon {
+  color: var(--rose-pink);
+  font-size: 1.4rem;
+  line-height: 1;
+  margin-top: 2px;
+  filter: drop-shadow(0 2px 4px rgba(255, 79, 135, 0.3));
+}
+
+.sweet-reminder-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--warm-brown);
+}
+
+.sweet-reminder-detail {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+@media (max-width: 640px) {
+  .sunset-landscape-box {
+    height: 140px;
+    margin-bottom: 1.2rem !important;
+  }
+  .sweet-reminder-card {
+    padding: 0.65rem 0.85rem;
+    gap: 0.7rem;
+    border-radius: 14px;
+  }
+  .sweet-reminder-icon {
+    font-size: 1.2rem;
+  }
+  .sweet-reminder-title {
+    font-size: 0.95rem;
+  }
+  .sweet-reminder-detail {
+    font-size: 0.82rem;
+  }
+}
+
+/* Special Message Screen */
+.special-teddy-container {
+  position: relative;
+  margin: 1.2rem auto;
+  width: 220px;
+  height: 210px;
+}
+
+.special-quote-box {
+  background: linear-gradient(135deg, #FFF6F9 0%, #F5EEFF 100%);
+  border: 2px solid rgba(255, 214, 231, 0.9);
+  border-radius: 24px;
+  padding: 1.6rem 1.4rem;
+  margin: 0.8rem auto 1.5rem auto;
+  max-width: 520px;
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 640px) {
+  .special-teddy-container {
+    width: 175px;
+    height: 170px;
+    margin: 0.6rem auto;
+  }
+  .special-quote-box {
+    padding: 1.15rem 1rem;
+    border-radius: 18px;
+    margin: 0.6rem auto 1.1rem auto;
+  }
+  .special-quote-box p {
+    font-size: 1.05rem !important;
+    line-height: 1.55 !important;
+  }
 }
 
 /* Heart Game Arena */
@@ -418,22 +626,258 @@
   animation: moonGlow 4s ease-in-out infinite;
 }
 
-@media (max-width: 600px) {
+/* Extras Tabs */
+.extras-tabs-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+/* ========================================================
+   Comprehensive Mobile & Phone Optimizations (<= 640px)
+   ======================================================== */
+@media (max-width: 640px) {
+  /* Header Phone Layout */
+  .app-header {
+    padding: 0.65rem 0.85rem 0.35rem 0.85rem;
+  }
+
+  .header-brand {
+    padding: 0.35rem 0.75rem;
+    gap: 0.4rem;
+  }
+
+  .header-brand-emoji {
+    font-size: 1.25rem;
+  }
+
+  .header-brand-title {
+    display: none;
+  }
+
+  .header-brand-title-mobile {
+    display: inline;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--warm-brown);
+  }
+
+  .header-actions {
+    gap: 0.45rem;
+  }
+
+  .icon-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .extras-pill-btn {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+    gap: 0.3rem;
+  }
+
+  .extras-btn-text {
+    display: none;
+  }
+
+  .extras-btn-text-mobile {
+    display: inline;
+  }
+
+  /* Typography */
   .page-title {
-    font-size: 1.8rem;
+    font-size: 1.65rem;
+    line-height: 1.25;
+    margin-bottom: 0.45rem;
   }
+
   .page-subtitle {
-    font-size: 1rem;
+    font-size: 0.98rem;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
   }
-  .game-arena {
-    height: 280px;
+
+  .page-badge {
+    font-size: 0.76rem;
+    padding: 0.28rem 0.75rem;
+    margin-bottom: 0.5rem;
   }
+
+  /* Buttons Touch Sizes */
+  .btn-cute-primary {
+    padding: 0.75rem 1.4rem;
+    font-size: 0.95rem;
+  }
+
+  .btn-cute-secondary {
+    padding: 0.68rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .btn-cute-outline {
+    padding: 0.65rem 1.1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Teddy Bears - Prevent oversized bears pushing content below fold */
+  .teddy-wrapper {
+    max-width: 175px !important;
+    max-height: 175px !important;
+  }
+
+  /* Screen 2: Mood Selection Grid */
   .mood-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
+    gap: 0.65rem;
+    margin: 1rem 0;
   }
+
+  .mood-card-item {
+    padding: 0.95rem 0.6rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .mood-emoji-badge {
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .mood-title {
+    font-size: 0.95rem;
+  }
+
+  .mood-desc {
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+
+  .mood-response-box {
+    padding: 1rem 0.85rem;
+    margin: 1rem 0;
+  }
+
+  /* Screen 3: Apology Carousel */
+  .carousel-card {
+    padding: 1.4rem 1.1rem;
+    min-height: 190px;
+    border-radius: var(--radius-md);
+  }
+
+  .carousel-quote-icon {
+    width: 26px;
+    height: 26px;
+    top: 10px;
+    right: 12px;
+  }
+
+  .carousel-arrows {
+    margin-top: 0.9rem;
+    gap: 0.8rem;
+  }
+
+  /* Screen 7: Catch The Hearts Mini-Game */
+  .game-hud {
+    padding: 0.55rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hud-item {
+    font-size: 0.98rem;
+  }
+
+  .game-arena {
+    height: 275px;
+    border-radius: var(--radius-md);
+  }
+
+  .game-heart-target {
+    padding: 8px; /* Expand finger touch target */
+  }
+
+  .game-finish-next-btn {
+    width: 100%;
+    font-size: 0.9rem !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  /* Screen 9: Ending Night Sky */
+  .ending-sky {
+    padding: 1.8rem 1rem !important;
+    min-height: auto !important;
+  }
+
+  .glowing-moon {
+    width: 46px;
+    height: 46px;
+    top: 18px;
+    right: 18px;
+  }
+
+  /* Extras Modal Tabs (2x2 grid on mobile phones) */
+  .extras-tabs-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.45rem;
+    width: 100%;
+  }
+
+  .extras-tab-btn {
+    width: 100%;
+    padding: 0.55rem 0.65rem !important;
+    font-size: 0.82rem !important;
+    gap: 0.35rem !important;
+  }
+}
+
+/* ========================================================
+   Extra Small Phones (<= 380px, e.g. iPhone SE, compact Galaxy)
+   ======================================================== */
+@media (max-width: 380px) {
+  .page-title {
+    font-size: 1.45rem;
+  }
+
+  .page-subtitle {
+    font-size: 0.9rem;
+  }
+
   .btn-cute-primary {
-    padding: 0.85rem 1.6rem;
-    font-size: 1rem;
+    padding: 0.68rem 1.15rem;
+    font-size: 0.9rem;
+  }
+
+  .btn-cute-secondary {
+    padding: 0.62rem 0.95rem;
+    font-size: 0.86rem;
+  }
+
+  .btn-cute-outline {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .teddy-wrapper {
+    max-width: 150px !important;
+    max-height: 150px !important;
+  }
+
+  .mood-card-item {
+    padding: 0.75rem 0.4rem;
+  }
+
+  .mood-title {
+    font-size: 0.88rem;
+  }
+
+  .mood-desc {
+    font-size: 0.74rem;
+  }
+
+  .game-arena {
+    height: 250px;
   }
 }
